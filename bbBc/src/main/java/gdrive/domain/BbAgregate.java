@@ -35,11 +35,12 @@ public class BbAgregate {
 
     //<<< Clean Arch / Port Method
     public static void bbPolicy(AaEvent aaEvent) {
-        /** Example 1:  new item 
+        /** Example 1:  new item  */
         BbAgregate bbAgregate = new BbAgregate();
+        bbAgregate.setFileid(aaEvent.getId().toString());
+        bbAgregate.setIndexkey(aaEvent.getName());
         repository().save(bbAgregate);
 
-        */
 
         /** Example 2:  finding and process
         

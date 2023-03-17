@@ -35,14 +35,16 @@ public class CcAgregate {
 
     //<<< Clean Arch / Port Method
     public static void ccPolicy(BbEvent bbEvent) {
-        /** Example 1:  new item 
+        /** Example 1:  new item */
         CcAgregate ccAgregate = new CcAgregate();
+
+        ccAgregate.setFileurl("https://youtube.com/"+bbEvent.getFileid().replaceAll("", "-"));
+        ccAgregate.setFileid(bbEvent.getFileid());
         repository().save(ccAgregate);
 
-        */
-
-        /** Example 2:  finding and process
         
+
+        /** Example 2:  finding and process 
         repository().findById(bbEvent.get???()).ifPresent(ccAgregate->{
             
             ccAgregate // do something

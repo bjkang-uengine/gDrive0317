@@ -24,11 +24,12 @@ public class EeRmViewHandler {
             // view 객체 생성
             EeRm eeRm = new EeRm();
             // view 객체에 이벤트의 Value 를 set 함
-            eeRm.setFileid(aaEvent.getId());
+            eeRm.setFileid(aaEvent.getId().toString());
             eeRm.setFilesize(String.valueOf(aaEvent.getSize()));
             eeRm.setUserid(aaEvent.getUserid());
             eeRm.setFilename(aaEvent.getName());
             eeRm.setIsFileUpload(true);
+   
             // view 레파지 토리에 save
             eeRmRepository.save(eeRm);
         } catch (Exception e) {
