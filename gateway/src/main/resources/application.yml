@@ -1,0 +1,90 @@
+server:
+  port: 8088
+
+---
+
+spring:
+  profiles: default
+  cloud:
+    gateway:
+      routes:
+        - id: eeBc
+          uri: http://localhost:8081
+          predicates:
+            - Path=, 
+        - id: aaBc
+          uri: http://localhost:8082
+          predicates:
+            - Path=/aaAgregates/**, 
+        - id: bbBc
+          uri: http://localhost:8083
+          predicates:
+            - Path=/bbAgregates/**, 
+        - id: ccBc
+          uri: http://localhost:8084
+          predicates:
+            - Path=/ccAgregates/**, 
+        - id: ddBc
+          uri: http://localhost:8085
+          predicates:
+            - Path=, 
+        - id: frontend
+          uri: http://localhost:8080
+          predicates:
+            - Path=/**
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins:
+              - "*"
+            allowedMethods:
+              - "*"
+            allowedHeaders:
+              - "*"
+            allowCredentials: true
+
+
+---
+
+spring:
+  profiles: docker
+  cloud:
+    gateway:
+      routes:
+        - id: eeBc
+          uri: http://eeBc:8080
+          predicates:
+            - Path=, 
+        - id: aaBc
+          uri: http://aaBc:8080
+          predicates:
+            - Path=/aaAgregates/**, 
+        - id: bbBc
+          uri: http://bbBc:8080
+          predicates:
+            - Path=/bbAgregates/**, 
+        - id: ccBc
+          uri: http://ccBc:8080
+          predicates:
+            - Path=/ccAgregates/**, 
+        - id: ddBc
+          uri: http://ddBc:8080
+          predicates:
+            - Path=, 
+        - id: frontend
+          uri: http://frontend:8080
+          predicates:
+            - Path=/**
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins:
+              - "*"
+            allowedMethods:
+              - "*"
+            allowedHeaders:
+              - "*"
+            allowCredentials: true
+
+server:
+  port: 8080
